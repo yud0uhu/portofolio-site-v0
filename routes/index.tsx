@@ -65,25 +65,35 @@ export default function Home(count: string) {
           </li>
         </ul>
       </aside>
-      <main className="flex items-center justify-center font-bold h-full overflow-auto pl-96 flex-grow">
+      <main className="flex items-center justify-center font-bold h-screen overflow-auto pl-96 flex-grow">
         <div className="flex flex-col items-center font-sans relative text-orange-stroke border-l border-r border-black max-w-2xl h-screen py-16 px-16 mx-32">
-          <marquee
-            className="text-3xl"
-            style={{ textShadow: "0 0 3px #FF0000, 0 0 5px #0000FF" }}
-          >
-            {"☆　ようこそ！おゆのホームページへ　☆".split("").map(
-              (character, index) => {
-                const animations = [
-                  "animate-marquee",
-                  "animate-marquee2",
-                  "animate-marquee3",
-                ];
-                return (
-                  <span className={animations[index % 3]}>{character}</span>
-                );
-              },
-            )}
-          </marquee>
+          <div className="flex flex-col items-center">
+            <div className="marquee-container text-3xl">
+              <marquee
+                style={{ textShadow: "0 0 3px #FF0000, 0 0 5px #0000FF" }}
+              >
+                {"☆　ようこそ！おゆのホームページへ　☆".split("").map(
+                  (character, index) => {
+                    const animations = [
+                      "animate-marquee",
+                      "animate-marquee2",
+                      "animate-marquee3",
+                    ];
+                    return (
+                      <span
+                        className={`inline-block ${animations[index % 3]}`}
+                        style={{
+                          animationDelay: `${index * 0.2}s`,
+                        }}
+                      >
+                        {character}
+                      </span>
+                    );
+                  },
+                )}
+              </marquee>
+            </div>
+          </div>
           <p>
             あなたは
           </p>
