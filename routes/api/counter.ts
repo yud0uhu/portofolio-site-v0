@@ -1,70 +1,60 @@
-import { DB } from "https://deno.land/x/sqlite/mod.ts";
-import { PhpWeb } from "https://cdn.jsdelivr.net/npm/php-wasm/PhpWeb.mjs";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
-function runPhp(code: string): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const php = new PhpWeb();
-
-    const stdoutParts: string[] = [];
-
-    php.addEventListener("output", (evt) => {
-      stdoutParts.push(evt?.["detail"]!);
-    });
-
-    php.addEventListener("ready", () => {
-      php.run(code).then((exitCode: number) => {
-        php.flush();
-
-        if (exitCode !== 0) {
-          reject(new Error(`PHP script returned exit code ${exitCode}`));
-          return;
-        }
-
-        resolve(stdoutParts.join(""));
-      });
-    });
-  });
-}
-
-async function createImageHTML(visit_count: number): Promise<string> {
-  const digits = Array.from(visit_count.toString());
-  let imageHTML = "";
-
-  for (const digit of digits) {
-    const phpOutput = await runPhp(`
-    <?php
-      echo '' . ${digit} . ''
-    ?>`);
-    imageHTML += phpOutput;
-  }
-  return imageHTML;
-}
+const SUPABASE_SECRET_KEY = Deno.env.get("SUPABASE_SECRET_KEY");
 
 export default async function Handler() {
-  const db = new DB("db/counter.db");
-  db.query("CREATE TABLE IF NOT EXISTS counter (count INTEGER)");
+  const client = createClient(
+    "https://quepzvpqdaudlmrjyxee.supabase.co",
+    SUPABASE_SECRET_KEY,
+  );
 
-  const [[count]] = db.query("SELECT COUNT(*) FROM counter");
-  const countExists = Number(count) > 0;
+  const { data: accessCounterData, error } = await client
+    .from("access_counter")
+    .select("counts")
+    .match({ id: 1 });
 
-  if (!countExists) {
-    db.query("INSERT INTO counter (count) VALUES (1)");
-  } else {
-    db.query("UPDATE counter SET count = count + 1");
+  if (error) {
+    throw error;
   }
 
-  const [[visit_count]] = db.query("SELECT count FROM counter");
+  if (accessCounterData && accessCounterData.length > 0) {
+    const visit_count = parseInt(accessCounterData[0].counts) + 1;
+    const { error: updateError } = await client
+      .from("access_counter")
+      .update({ counts: visit_count })
+      .match({ id: 1 });
 
-  const imageHTML = await createImageHTML(Number(visit_count));
+    if (updateError) {
+      throw updateError;
+    }
 
+    const html = buildHTMLResponse(visit_count);
+
+    return new Response(html, { headers: { "Content-Type": "text/html" } });
+  } else {
+    const visit_count = 1;
+    const { error: insertError } = await client
+      .from("access_counter")
+      .insert({ id: 1, counts: visit_count });
+
+    if (insertError) {
+      throw insertError;
+    }
+
+    const html = buildHTMLResponse(visit_count);
+
+    return new Response(html, { headers: { "Content-Type": "text/html" } });
+  }
+}
+
+function buildHTMLResponse(visit_count: number): string {
   const html = `
-  <html>
-    <head>
-    </head>
-    <body>
-      <p>${imageHTML}</p>
-    </body>
-  </html>`;
-
-  return new Response(html, { headers: { "Content-Type": "text/html" } });
+      <html>
+        <head>
+        </head>
+        <body>
+          <p>${visit_count}</p>
+        </body>
+      </html>`;
+  return html;
 }
