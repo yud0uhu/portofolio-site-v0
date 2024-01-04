@@ -1,4 +1,4 @@
-name: Deploy
+name: DenoDeploy
 
 on: push
 
@@ -17,5 +17,7 @@ jobs:
       - name: Deploy to Deno Deploy
         uses: denoland/deployctl@v1
         with:
-          project: portofolio-site-v0
-          entrypoint: main.ts 
+          project: yud0uhu
+          entrypoint: main.ts
+        env:
+          DEPLOY_TOKEN: ${{ secrets.DENO_DEPLOY_TOKEN }}
