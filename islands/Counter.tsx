@@ -27,13 +27,13 @@ export default function Counter() {
   const counterArray = counterContent.split("");
 
   return (
-    <div className="flex flex-row justify-center">
+    <div class="flex flex-row justify-center">
       {counterArray.map((num, index) =>
         num.trim() !== ""
           ? (
             <span
               key={index}
-              className={`${
+              class={`${
                 index < counterArray.length - 1 ? "mr-1" : ""
               } text-2xl bg-black text-white px-5 py-2 font-bold`}
             >

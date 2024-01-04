@@ -2,7 +2,7 @@ import Counter from "../islands/Counter.tsx";
 
 export default function Home(count: string) {
   return (
-    <div className="flex min-h-screen bg-[url('images/bg.png')] bg-cover bg-no-repeat overflow-auto font-roboto">
+    <div class="flex min-h-screen bg-[url('images/bg.png')] bg-cover bg-no-repeat overflow-auto font-roboto">
       <script src="https://app.embed.im/snow.js" defer></script>
       <style>
         {`
@@ -20,32 +20,32 @@ export default function Home(count: string) {
         }
         `}
       </style>
-      <aside className="navbar w-370 h-750 left-[calc(50vw - 575px)] top-[calc(50vh - 375px)] fixed border-double border-4 border-black">
-        <ul className="stroke-black font-bold font-san pl-16 mt-16">
-          <li className="mb-4">
+      <aside class="navbar w-370 h-750 left-[calc(50vw - 575px)] top-[calc(50vh - 375px)] fixed border-double border-4 border-black">
+        <ul class="stroke-black font-bold font-san pl-16 mt-16">
+          <li class="mb-4">
             <a
               href="#"
-              className="hover:underline pb-16 text-orange-stroke"
+              class="hover:underline pb-16 text-orange-stroke"
             >
               <strong>
                 <span>☆　プロフィール　☆</span>
               </strong>
             </a>
           </li>
-          <li className="mb-4">
+          <li class="mb-4">
             <a
               href="https://twitter.com/yud0uhu"
-              className="hover:underline text-orange-stroke"
+              class="hover:underline text-orange-stroke"
             >
               <strong>
                 <span>☆　つぶやき　☆</span>
               </strong>
             </a>
           </li>
-          <li className="mb-4">
+          <li class="mb-4">
             <a
               href="#"
-              className="hover:underline text-orange-stroke"
+              class="hover:underline text-orange-stroke"
             >
               <strong>
                 <span>☆　BBS　☆</span>
@@ -53,10 +53,10 @@ export default function Home(count: string) {
             </a>
           </li>
 
-          <li className="mb-4">
+          <li class="mb-4">
             <a
               href="#"
-              className="hover:underline text-orange-stroke"
+              class="hover:underline text-orange-stroke"
             >
               <strong>
                 <span>☆　LINK　☆</span>
@@ -65,10 +65,10 @@ export default function Home(count: string) {
           </li>
         </ul>
       </aside>
-      <main className="flex items-center justify-center font-bold h-screen overflow-auto pl-96 flex-grow">
-        <div className="flex flex-col items-center font-sans relative text-orange-stroke border-l border-r border-black max-w-2xl h-screen py-16 px-16 mx-32">
-          <div className="flex flex-col items-center">
-            <div className="marquee-container text-3xl">
+      <main class="flex items-center justify-center font-bold h-screen overflow-auto pl-96 flex-grow">
+        <div class="flex flex-col items-center font-sans relative text-orange-stroke border-l border-r border-black max-w-2xl h-screen py-16 px-16 mx-32">
+          <div class="flex flex-col items-center">
+            <div class="marquee-container text-3xl">
               <marquee
                 style={{ textShadow: "0 0 3px #FF0000, 0 0 5px #0000FF" }}
               >
@@ -81,7 +81,7 @@ export default function Home(count: string) {
                     ];
                     return (
                       <span
-                        className={`inline-block ${animations[index % 3]}`}
+                        class={`inline-block ${animations[index % 3]}`}
                         style={{
                           animationDelay: `${index * 0.2}s`,
                         }}
@@ -98,11 +98,11 @@ export default function Home(count: string) {
             あなたは
           </p>
           <Counter />
-          <p className="mb-16">
+          <p class="mb-16">
             人目の訪問者です
           </p>
           <img src="images/tukimisoba1110.gif"></img>
-          <div className="m-3 mt-0 mb-4 p-1 w-full">
+          <div class="m-3 mt-0 mb-4 p-1 w-full">
             <strong>
               <span>
                 ☆　キリ番踏み逃げ禁止です！BBSに記念カキコしてね！　☆
@@ -110,47 +110,47 @@ export default function Home(count: string) {
             </strong>
           </div>
 
-          <div className="border-double border-4 border-black">
-            <table className="w-full text-center">
+          <div class="border-double border-4 border-black">
+            <table class="w-full text-center">
               <tr>
-                <td className="border-double border border-black p-2">
+                <td class="border-double border border-black p-2">
                   プロフィール
                 </td>
-                <td className="border-double border border-black p-2">
+                <td class="border-double border border-black p-2">
                   管理人のプロフィールです！
                 </td>
               </tr>
               <tr>
-                <td className="border-double border border-black p-2">
+                <td class="border-double border border-black p-2">
                   つぶやき
                 </td>
-                <td className="border-double border border-black p-2">
+                <td class="border-double border border-black p-2">
                   管理人のつぶやきです！
                 </td>
               </tr>
               <tr>
-                <td className="border-double border border-black p-2">BBS</td>
-                <td className="border-double border border-black p-2">
+                <td class="border-double border border-black p-2">BBS</td>
+                <td class="border-double border border-black p-2">
                   キリ番を踏んだ人はここに書き込んでください！
                 </td>
               </tr>
               <tr>
-                <td className="border-double border border-black p-2">LINK</td>
-                <td className="border-double border border-black p-2">
+                <td class="border-double border border-black p-2">LINK</td>
+                <td class="border-double border border-black p-2">
                   素敵サイトさまへのリンクです
                 </td>
               </tr>
             </table>
           </div>
-          <div className="mt-16">
+          <div class="mt-16">
             <audio controls loop autoPlay>
               <source src="audio/maou_game_orgel04.mp3" type="audio/mp3">
                 Your browser does not support the audio tag.
               </source>
             </audio>
           </div>
-          <div className="update-history border-double border-4 border-black p-4 mt-8">
-            <h2 className="text-orange-stroke font-bold text-2xl mb-4">
+          <div class="update-history border-double border-4 border-black p-4 mt-8">
+            <h2 class="text-orange-stroke font-bold text-2xl mb-4">
               更新履歴
             </h2>
             <ul>
