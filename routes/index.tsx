@@ -1,9 +1,17 @@
 import Counter from "../islands/Counter.tsx";
 
-export default function Home(count: string) {
+export default function Home() {
   return (
     <div class="flex min-h-screen bg-[url('images/bg.png')] bg-cover bg-no-repeat overflow-auto font-roboto">
       <script src="https://app.embed.im/snow.js" defer></script>
+      <script>
+        {`
+        self.addEventListener('contextmenu', function (event) {
+          event.preventDefault();
+          alert('右クリック禁止です！');
+        });
+        `}
+      </script>;
       <style>
         {`
         .text-orange-stroke {
