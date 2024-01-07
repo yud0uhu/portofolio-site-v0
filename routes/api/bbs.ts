@@ -2,11 +2,9 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { PhpWeb } from "https://cdn.jsdelivr.net/npm/php-wasm/PhpWeb.mjs";
 import { Handlers } from "$fresh/server.ts";
 
-const SUPABASE_SECRET_KEY = Deno.env.get("SUPABASE_SECRET_KEY");
-
 const client = createClient(
   "https://quepzvpqdaudlmrjyxee.supabase.co",
-  SUPABASE_SECRET_KEY,
+  Deno.env.get("SUPABASE_SECRET_KEY"),
 );
 
 interface Args {

@@ -1,11 +1,9 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
-const SUPABASE_SECRET_KEY = Deno.env.get("SUPABASE_SECRET_KEY");
-
 export default async function Handler() {
   const client = createClient(
     "https://quepzvpqdaudlmrjyxee.supabase.co",
-    SUPABASE_SECRET_KEY,
+    Deno.env.get("SUPABASE_SECRET_KEY"),
   );
 
   const { data: accessCounterData, error } = await client
