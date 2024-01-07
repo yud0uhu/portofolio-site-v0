@@ -68,6 +68,7 @@ export default function Form() {
             class="py-2 px-4 mb-3 border rounded shadow appearance-none leading-tight focus:outline-none focus:shadow-outline"
           />
         </label>
+        <br />
         <label>
           タイトル：<input
             name="title"
@@ -79,8 +80,9 @@ export default function Form() {
         </label>
         <label>
           パスワード：<input
-            name="pass"
-            size={19}
+            name="password"
+            type="password"
+            size={4}
             value={pass}
             onChange={(e) => setPass(e.currentTarget.value)}
             class="py-2 px-4 mb-3 border rounded shadow appearance-none leading-tight focus:outline-none focus:shadow-outline"
@@ -94,7 +96,7 @@ export default function Form() {
           name="MESSAGE"
           value={comment}
           onChange={(e) => setComment(e.currentTarget.value)}
-          class="w-full py-2 px-4 mb-3 border rounded shadow appearance-none leading-tight focus:outline-none focus:shadow-outline"
+          class="text-black w-full py-2 px-4 mb-3 border rounded shadow appearance-none leading-tight focus:outline-none focus:shadow-outline"
           style={{
             background:
               "url('//2ch.sc/NewYearIllust/5.svgz') center center / contain no-repeat",

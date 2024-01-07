@@ -73,6 +73,7 @@ export default function Home() {
           </li>
         </ul>
       </aside>
+
       <main class="flex items-center justify-center font-bold h-screen overflow-auto pl-96 flex-grow">
         <div class="flex flex-col items-center font-sans relative text-orange-stroke border-l border-r border-black max-w-2xl h-screen py-16 px-16 mx-32">
           <div class="flex flex-col items-center">
