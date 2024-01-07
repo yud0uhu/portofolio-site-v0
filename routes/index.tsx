@@ -52,7 +52,7 @@ export default function Home() {
           </li>
           <li class="mb-4">
             <a
-              href="#"
+              href="/bbs"
               class="hover:underline text-orange-stroke"
             >
               <strong>
