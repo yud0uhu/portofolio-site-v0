@@ -1,5 +1,4 @@
 import { useEffect, useState } from "preact/hooks";
-import ky from "https://esm.sh/ky";
 
 interface Post {
   id: number;
@@ -35,7 +34,7 @@ export default function Form() {
   }, []);
 
   return (
-    <div className="container mx-auto px-4">
+    <div class="flex flex-col items-center font-sans relative text-stroke border-l border-r border-black max-w-2xl h-screen py-16 px-16 mx-32">
       {posts.map((msg, index) => (
         <div key={index} class="mb-4 rounded p-2">
           <p class="">
