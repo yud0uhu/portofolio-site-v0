@@ -33,3 +33,4 @@ jobs:
           entrypoint: main.ts
         env:
           DEPLOY_TOKEN: ${{ secrets.DENO_DEPLOY_TOKEN }}
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
