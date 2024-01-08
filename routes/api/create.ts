@@ -1,11 +1,6 @@
 import { PhpWeb } from "https://cdn.jsdelivr.net/npm/php-wasm/PhpWeb.mjs";
 import { Handlers } from "$fresh/server.ts";
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2.39.2";
-
-const client = createClient(
-  "https://quepzvpqdaudlmrjyxee.supabase.co",
-  Deno.env.get("SUPABASE_SECRET_KEY"),
-);
+import client from "../../utils/supabaseClient.ts";
 
 type Args = {
   title: string;
